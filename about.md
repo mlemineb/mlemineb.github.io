@@ -7,7 +7,7 @@ group: navigation
 
 **Welcome to my page!**
 
-![]({{ site.url }}/assets/images/my_pic_profile.jpg){:style="float: left;margin-right: 7px;margin-top: 7px; margin-bottom: 7px; margin-left: 7px; width: 200px"}
+![]({{ site.url }}/assets/images/Bewerbungsfoto.jpg){:style="float: left;margin-right: 7px;margin-top: 7px; margin-bottom: 7px; margin-left: 7px; width: 200px"}
 
 hhhhhhhhhhhhhh
 
