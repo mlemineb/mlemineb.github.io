@@ -9,9 +9,7 @@ group: navigation
 
 ![]({{ site.url }}/assets/images/Bewerbungsfoto.jpg){:style="float: left;margin-right: 7px;margin-top: 7px; margin-bottom: 7px; margin-left: 7px; width: 200px"}
 
-I'm Shirin, a biologist turned bioinformatician turned data scientist. 
-
-I'm especially interested in machine learning and data visualization. While I am using R most every day at work, I wanted to have an incentive to regularly explore other types of analyses and other types of data that I don't normally work with. I have also very often benefited from other people's published code in that it gave me ideas for my own work; and I hope that sharing my own analyses will inspire others as much as I often am by what can be be done with data.  It's amazing to me what can be learned from analyzing and visualizing data!
+hhhhhhhhhhhhhh
 
 My tool of choice for data analysis so far has been R. I also organize the [MünsteR R-users group on meetup.com](https://shiring.github.io/r_users_group/2017/05/20/muenster_r_user_group). 
 
