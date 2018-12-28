@@ -16,7 +16,7 @@ I find data science fascinating as it is a very challenging concept. In my envir
 
 So far my favorite tool for performing data analysis has been R. I also have big interest for other languages , specially python , which I use more for Computer vision project .
 
-![My journey to Data Science]({{ site.url }}/assets/images/my_story.png){:style="float: right;margin-right: 7px;margin-top: 7px; margin-bottom: 7px; margin-left: 7px; width: 600px"}
+![My journey to Data Science]({{ site.url }}/assets/images/my_story.png){:style="float: right;margin-right: 7px;margin-top: 7px; margin-bottom: 7px; margin-left: 7px; width: 550px"}
 
 I love soccer, reading about other cultures and travaling . I think that we always learn new things from people and every human being is  very special .
 
