@@ -346,7 +346,7 @@ network
 
 **Click to open the interactive network and use the mouse to zoom and turn the plot:**
 
-<a href="network.html"><img border="0" alt="networkD3" src="networkD3.png" width="500" height="500">
+<a href="network.html"><img border="0" alt="network" src="network.png" width="500" height="500">
 
 
 Now lets detect communities in our network.
