@@ -12,7 +12,7 @@ This post is about a  kaggle competition that was organised by Toulouse school o
 
 The main goal was to predict the recipients of some emails . We had to mix machine learning, network and text mining techniques to propose a final model that takes an email (its sender ,its content and some features extracted from the content) as input and output the list of its recipients.
 
-[Officiale Kaggle page](Kaggle https://www.kaggle.com/c/recipient-prediction-2018).
+[Officiale Kaggle page](https://www.kaggle.com/c/recipient-prediction-2018).
 
 The remainder of this Notebook is structured as follows. I will start by setting my work Environmen , then I will download and import the data sets ; followed by a basic statistical analysis . 
 
@@ -167,7 +167,7 @@ knitr::kable(Training[18:19,], format = "html")
 
 ```
 
-<img src="text_analysis/2018/12/31/WebminingKaggle_post_files/figure-markdown_github/Capture1_WK.png" style="display: block; margin: auto;" />
+<img src="WebminingKaggle_post_files/figure-markdown_github/Capture1_WK.png" style="display: block; margin: auto;" />
 
 
 ```r
@@ -176,7 +176,7 @@ knitr::kable(Test[16:18,], format = "html")
 
 ```
 
-<img src="text_analysis/2018/12/31/WebminingKaggle_post_files/figure-markdown_github/Capture2_WK.png" style="display: block; margin: auto;" />
+<img src="WebminingKaggle_post_files/figure-markdown_github/Capture2_WK.png" style="display: block; margin: auto;" />
 
 
 <br>
@@ -211,7 +211,7 @@ display what I have done so Fare
 writeLines("td, th { padding : 6px } th { background-color : brown ; color : white; border : 1px solid white; } td { color : brown ; border : 1px solid brown }", con = "mystyle.css")
 knitr::kable(Trainingv2[1:3,], format = "html")
 ```
-<img src="text_analysis/2018/12/31/WebminingKaggle_post_files/figure-markdown_github/Capture3_WK.png" style="display: block; margin: auto;" />
+<img src="WebminingKaggle_post_files/figure-markdown_github/Capture3_WK.png" style="display: block; margin: auto;" />
 
 
 As you can see I have one recipient per row 
@@ -235,7 +235,7 @@ p<-ggplot(data=email_recevied_count[1:15,], aes(x=recipient, y=count)) +
 p + coord_flip() 
 ```
 
-<img src="text_analysis/2018/12/31/WebminingKaggle_post_files/figure-markdown_github/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
+<img src="WebminingKaggle_post_files/figure-markdown_github/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
 
 
 second plot : Mails sent
@@ -253,7 +253,7 @@ p<-ggplot(data=email_sent_count[1:15,], aes(x=Sender, y=count)) +
 p + coord_flip() 
 ```
 
-<img src="text_analysis/2018/12/31/WebminingKaggle_post_files/figure-markdown_github/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+<img src="WebminingKaggle_post_files/figure-markdown_github/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
 
 
 We have seen the Hillary seems the one who send and receive the most emails , which make sense :)
