@@ -22,6 +22,7 @@ Finally, I will perform a machine learning modeling using python as It is much f
 
 Note that the first part of this Notebook, which corresponds to pre-processing and analysis, is performed with the software R.
 
+<br>
 
 
 I ENVIRONEMENT's PREPARATION 
@@ -46,6 +47,9 @@ diffp<-setdiff(packages, rownames(installed.packages()))
 # if yes i do nothing if no i install them
 if (length(diffp) > 0) {install.packages(diffp)}
 ```
+<br>
+
+
 II DATA IMPORTATION
 -------------------
 
@@ -105,6 +109,9 @@ train_set<-read.csv("data/training_set_sid.csv",header = F)
 test_info<-read.csv("data/test_info_sid.csv",header = F)
 test_set<-read.csv("data/test_set_sid.csv",header = F)
 ```
+<br>
+
+
 III DATA PREPARATION
 --------------------
 
@@ -165,6 +172,9 @@ writeLines("td, th { padding : 6px } th { background-color : brown ; color : whi
 knitr::kable(Test[16:18,], format = "html")
 
 ```
+<br>
+
+
 IV  BASIC ANALYSIS
 ------------------
 
@@ -246,6 +256,9 @@ names(pred_freq)<-c("Id","Recipients") # rename the headers
 # export the dataframe into a csv file (needed format for kaggle)
 write.csv2(pred_freq,file="topfreq_submission.csv",row.names = F)
 ```
+
+<br>
+
 
 V NETWORK ANALYSIS
 ------------------
@@ -359,6 +372,9 @@ library(plyr)
 Trainingv3<-join(Trainingv2, community,type = "left")
 Testv3<-join(Test, community,type = "left")
 ```
+
+<br>
+
 
 VI TEXT MINING 
 --------------
@@ -577,6 +593,9 @@ Testv3$id_row<-row.names(Testv3)
 Testv4<-join(Testv3,test_topic_dat_with_top3,type="left")
 
 ```
+
+<br>
+
 
 VII FEATURE ENGINEERING 
 -----------------------
