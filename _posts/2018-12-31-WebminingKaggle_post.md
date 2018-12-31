@@ -167,7 +167,7 @@ knitr::kable(Training[18:19,], format = "html")
 
 ```
 
-<img src="WebminingKaggle_post_files/figure-markdown_github/Capture1_WK.png" style="display: block; margin: auto;" />
+<img src="WebminingKaggle_post_files/figure-markdown_github/Capture1-WK.png" style="display: block; margin: auto;" />
 
 
 ```r
@@ -176,7 +176,7 @@ knitr::kable(Test[16:18,], format = "html")
 
 ```
 
-<img src="WebminingKaggle_post_files/figure-markdown_github/Capture2_WK.png" style="display: block; margin: auto;" />
+<img src="WebminingKaggle_post_files/figure-markdown_github/Capture2-WK.png" style="display: block; margin: auto;" />
 
 
 <br>
@@ -211,8 +211,7 @@ display what I have done so Fare
 writeLines("td, th { padding : 6px } th { background-color : brown ; color : white; border : 1px solid white; } td { color : brown ; border : 1px solid brown }", con = "mystyle.css")
 knitr::kable(Trainingv2[1:3,], format = "html")
 ```
-<img src="WebminingKaggle_post_files/figure-markdown_github/Capture3_WK.png" style="display: block; margin: auto;" />
-
+<img src="WebminingKaggle_post_files/figure-markdown_github/Capture3-WK.png" style="display: block; margin: auto;" />
 
 As you can see I have one recipient per row 
 
