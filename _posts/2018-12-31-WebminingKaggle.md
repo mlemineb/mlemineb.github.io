@@ -167,11 +167,17 @@ knitr::kable(Training[18:19,], format = "html")
 
 ```
 
+<img src="text_analysis/2018/12/31/Capture1_WK.png" style="display: block; margin: auto;" />
+
+
 ```r
 writeLines("td, th { padding : 6px } th { background-color : brown ; color : white; border : 1px solid white; } td { color : brown ; border : 1px solid brown }", con = "mystyle.css")
 knitr::kable(Test[16:18,], format = "html")
 
 ```
+
+<img src="text_analysis/2018/12/31/Capture2_WK.png" style="display: block; margin: auto;" />
+
 <br>
 
 
@@ -204,6 +210,9 @@ display what I have done so Fare
 writeLines("td, th { padding : 6px } th { background-color : brown ; color : white; border : 1px solid white; } td { color : brown ; border : 1px solid brown }", con = "mystyle.css")
 knitr::kable(Trainingv2[1:3,], format = "html")
 ```
+<img src="text_analysis/2018/12/31/Capture2_WK.png" style="display: block; margin: auto;" />
+
+
 As you can see I have one recipient per row 
 
 Now Lets start plotting : Received Mails
@@ -225,6 +234,9 @@ p<-ggplot(data=email_recevied_count[1:15,], aes(x=recipient, y=count)) +
 p + coord_flip() 
 ```
 
+<img src="text_analysis/2018/12/31/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
+
+
 second plot : Mails sent
 ```r
 # firts I summarize the Training data by grouping the emails sent by sender
@@ -239,6 +251,9 @@ p<-ggplot(data=email_sent_count[1:15,], aes(x=Sender, y=count)) +
   scale_x_discrete(limits = email_sent_count[1:15,]$Sender)
 p + coord_flip() 
 ```
+
+<img src="text_analysis/2018/12/31/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+
 
 We have seen the Hillary seems the one who send and receive the most emails , which make sense :)
 Now Let's make a prediction based only on frequencies to see what will it score 
@@ -328,6 +343,12 @@ network<-forceNetwork(Links = as.data.frame(emailInteractionsLinks), Nodes = ema
              opacity = 0.9, zoom = TRUE)
 network
 ```
+
+**Click to open the interactive network and use the mouse to zoom and turn the plot:**
+
+<a href="network.html"><img border="0" alt="networkD3" src="networkD3.png" width="500" height="500">
+
+
 Now lets detect communities in our network.
 To do that we need to switch to another graph package and create again the network.
 
