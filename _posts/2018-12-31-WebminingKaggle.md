@@ -5,7 +5,7 @@ author: "Beydia Mohamed Lemine"
 date: "29 March 2018"
 categories: text_analysis
 tags: text_analysis kaggle network text mining
-image: text_analysis/2018/12/31/unnamed-chunk-16-1.png
+image: text_analysis/2018/12/31/network.png
 ---
 
 This post is about a  kaggle competition that was organised by Toulouse school of Economics and both University of Toulouse 1 & 3 (Paul Sabatier) between 3 master's programe in statisctics.
@@ -178,6 +178,8 @@ knitr::kable(Test[16:18,], format = "html")
 
 <img src="text_analysis/2018/12/31/Capture2_WK.png" style="display: block; margin: auto;" />
 ![](text_analysis/2018/12/31/Capture2_WK.png)
+
+
 <br>
 
 
