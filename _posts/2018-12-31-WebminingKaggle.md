@@ -1,84 +1,36 @@
 ---
+layout: post
 title: "Web-Mining: a Kaggle competition"
 author: "Beydia Mohamed Lemine"
 date: "29 March 2018"
-output:
-  html_document: default
-  pdf_document: default
-  word_document: default
+categories: text_analysis
+tags: text_analysis kaggle network text mining
+image: text_analysis/2018/12/31/unnamed-chunk-16-1.png
 ---
-<style type="text/css">
 
-h1.title {
-  font-size: 38px;
-  color: DarkRed;
-  text-align: center;
-}
-h4.author { /* Header 4 - and the author and data headers use this too  */
-    font-size: 18px;
-  font-family: "Times New Roman", Times, serif;
-  color: DarkRed;
-  text-align: center;
-}
-h4.date { /* Header 4 - and the author and data headers use this too  */
-  font-size: 18px;
-  font-family: "Times New Roman", Times, serif;
-  color: DarkBlue;
-  text-align: center;
-}
-</style>
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+This post is about a  kaggle competition that was organised by Toulouse school of Economics and both University of Toulouse 1 & 3 (Paul Sabatier) between 3 master's programe in statisctics.
 
-```{r, echo=FALSE}
-library(htmltools)
+The main goal was to predict the recipients of some emails . We had to mix machine learning, network and text mining techniques to propose a final model that takes an email (its sender ,its content and some features extracted from the content) as input and output the list of its recipients.
 
-htmltools::img(src =  knitr::image_uri("ups.jpg"), 
-               alt = 'logo', 
-               style = 'position:absolute; top:0; left:0; padding:1Opx;')
-```
+[Officiale Kaggle page](Kaggle https://www.kaggle.com/c/recipient-prediction-2018).
 
-```{r, echo=FALSE}
-library(htmltools)
+The remainder of this Notebook is structured as follows. I will start by setting my work Environmen , then I will download and import the data sets ; followed by a basic statistical analysis . 
 
-htmltools::img(src = knitr::image_uri("tse.png"), 
-               alt = 'logo', 
-               style = 'position:absolute; top:0; right:0; padding:1Opx;')
-```
+Onces this done, I will go deeper by performing a graph analysis, a text mining analysis and some features extractions using these both analysis?
 
-
-The remainder of this Notebook is structured as follows. We will start by setting our work Environment. Then, we will download and import the data sets ; followed by a basic statistical analysis . 
-Then we will go deeper by performing a graph analysis, a text mining analysis and features extractions from these both analysis?
-Finally, we perform a machine learning modeling using python as It is much faster than R. 
+Finally, I will perform a machine learning modeling using python as It is much faster than R. 
 
 Note that the first part of this Notebook, which corresponds to pre-processing and analysis, is performed with the software R.
 
 
 
-## I ENVIRONEMENT's PREPARATION 
+I ENVIRONEMENT's PREPARATION 
+----------------------------
 
-We are going to start by preparing our work environment. First of all we will create a folder "*data*" in which we are are going to store the data then we will install all the packages that will be needed and to avoid package version issues,we will check  that these packages were not installed before.  
-
-```{r,echo=FALSE}
-
-# I create my folder
-setwd("C:/Users/mlemi/Desktop/kaggle/Webmining/notebook")
-if (!file.exists("data")) {dir.create("data")}
-
-# I put all the packages that will be required in a vector 
-packages<-c("devtools","tidyr","urltools","stringr","plyr","readr","data.table","tm","networkD3",
-            "SnowballC","Matrix","lda","LDAvis","servr","RCurl","dplyr","ggplot2","tables")
+First of all we will create a folder "*data*" in which we are are going to store the data then we will install all the packages that will be needed and to avoid package version issues,we will check  that these packages were not installed before.  
 
 
-# I check if theses packages are installed yet 
-diffp<-setdiff(packages, rownames(installed.packages()))
-# if yes i do nothing if no i install them
-if (length(diffp) > 0) {install.packages(diffp)}
-
-```
-
-```{r ,eval=FALSE,tidy=TRUE}
+```r 
 # I create my folder
 setwd("C:/Users/mlemi/Desktop/kaggle/Webmining/notebook")
 if (!file.exists("data")) {dir.create("data")}
@@ -94,7 +46,8 @@ diffp<-setdiff(packages, rownames(installed.packages()))
 # if yes i do nothing if no i install them
 if (length(diffp) > 0) {install.packages(diffp)}
 ```
-## II DATA IMPORTATION
+II DATA IMPORTATION
+-------------------
 
 The data that we are going to manipulate can be found 
 <https://www.kaggle.com/c/recipient-prediction-2018/data/>
@@ -140,7 +93,8 @@ rm(curl)
 gc()
 ```
 Once the data downloaded, we load them the R console.
-```{r  eval=TRUE,cache=TRUE,tidy=TRUE}
+
+```r
 # set my directory
 setwd("C:/Users/mlemi/Desktop/kaggle/Webmining/notebook")
 
@@ -151,11 +105,12 @@ train_set<-read.csv("data/training_set_sid.csv",header = F)
 test_info<-read.csv("data/test_info_sid.csv",header = F)
 test_set<-read.csv("data/test_set_sid.csv",header = F)
 ```
-## III DATA PREPARATION
+III DATA PREPARATION
+--------------------
 
 In this section, we are going to restructure our data sets in order to have one train data set and one test data set.
 Each row of theses data sets will contain one mail and one sender.
-```{r eval=TRUE,results="hide",message = FALSE, warning=FALSE }
+```r
 ### TRAIN ####
 
 # I put names to the variables
@@ -199,24 +154,25 @@ Test<-Test[,c(2,1,3:4)]
 ```
 Visualize what a I have done so far :
 I choose do display these row precisely just for illustration sake since the content is not to big
-```{r, results='asis'}
+```r
 writeLines("td, th { padding : 6px } th { background-color : brown ; color : white; border : 1px solid white; } td { color : brown ; border : 1px solid brown }", con = "mystyle.css")
 knitr::kable(Training[18:19,], format = "html")
 
 ```
 
-```{r, results='asis'}
+```r
 writeLines("td, th { padding : 6px } th { background-color : brown ; color : white; border : 1px solid white; } td { color : brown ; border : 1px solid brown }", con = "mystyle.css")
 knitr::kable(Test[16:18,], format = "html")
 
 ```
-## IV  BASIC ANALYSIS
+IV  BASIC ANALYSIS
+------------------
 
 Let's start by counting how many how many emails has been sent or received per person.
 
 But before that we will Reshape the training data set in  order to have for each mail , one recipient
 
-```{r eval=TRUE,cache=TRUE }
+```r
 
 # The following function will help us to have have one recipient per mail sent
 my_funct2<-function(i,df){
@@ -231,8 +187,10 @@ invisible(suppressWarnings((Trainingv2 = ldply(min(Training$Mail_ID):max(Trainin
     
 
 ```
+
 display what I have done so Fare
-```{r, results='asis'}
+
+```r
 writeLines("td, th { padding : 6px } th { background-color : brown ; color : white; border : 1px solid white; } td { color : brown ; border : 1px solid brown }", con = "mystyle.css")
 knitr::kable(Trainingv2[1:3,], format = "html")
 ```
@@ -240,7 +198,7 @@ As you can see I have one recipient per row
 
 Now Lets start plotting : Received Mails
 
-```{r eval=TRUE,cache=TRUE, tidy=TRUE }
+```r 
 library(dplyr)
 # firts I summarize the Training data by grouping the emails sent by recipient
 email_recevied_count= Trainingv2 %>%
@@ -258,7 +216,7 @@ p + coord_flip()
 ```
 
 second plot : Mails sent
-```{r  eval=TRUE,cache=TRUE,tidy=TRUE }
+```r
 # firts I summarize the Training data by grouping the emails sent by sender
 email_sent_count= Trainingv2 %>%
   dplyr::group_by(Sender) %>%
@@ -276,7 +234,7 @@ We have seen the Hillary seems the one who send and receive the most emails , wh
 Now Let's make a prediction based only on frequencies to see what will it score 
 
 
-```{r eval=TRUE,cache=TRUE,tidy=TRUE }
+```r
 
 Top10_receivers<-list(as.character(email_recevied_count[1:10,]$recipient))
 
@@ -289,11 +247,12 @@ names(pred_freq)<-c("Id","Recipients") # rename the headers
 write.csv2(pred_freq,file="topfreq_submission.csv",row.names = F)
 ```
 
-## V NETWORK ANALYSIS
+V NETWORK ANALYSIS
+------------------
 
 In this section we will make some network(graph) analysis 
 
-```{r eval=TRUE,cache=TRUE,tidy=TRUE}
+```r
 emailInteractionsLinks = Trainingv2 %>%
   dplyr::group_by(Sender, recipient) %>%
   dplyr::summarize(count = n())
@@ -314,12 +273,12 @@ emailInteractionsNodes$size = 0
 ```
 
 display what I have done so Fare 
-```{r eval=TRUE,cache=TRUE,tidy=TRUE }
+```r 
 head(emailInteractionsLinks[1:5,])
 head(emailInteractionsNodes[1:5,])
 ```
 
-```{r eval=TRUE,cache=TRUE,tidy=TRUE }
+```r
 
 
 for (i in 1:nrow(emailInteractionsLinks)) {
@@ -345,7 +304,7 @@ head(emailInteractionsNodes[1:5,])
 ```
 
 Now lets visualize the network
-```{r eval=TRUE,cache=TRUE,tidy=TRUE }
+```r
 library(networkD3)
 
 network<-forceNetwork(Links = as.data.frame(emailInteractionsLinks), Nodes = emailInteractionsNodes,
@@ -358,7 +317,8 @@ network
 ```
 Now lets detect communities in our network.
 To do that we need to switch to another graph package and create again the network.
-```{r eval=TRUE,cache=TRUE,tidy=TRUE}
+
+```r
 suppressWarnings(library(igraph))
 
 net <- graph_from_data_frame(d=emailInteractionsLinks, vertices=emailInteractionsNodes, directed=T) 
@@ -381,7 +341,7 @@ names(community)<-c("Sender","Community_grp")
 The communities were created , we see on the dendograme how many communities we have .
 Now lets have a look on whats is inside our communities .
 
-```{r eval=TRUE,cache=TRUE,tidy=TRUE,results='asis'}
+```r
 writeLines("td, th { padding : 6px } th { background-color : brown ; color : white; border : 1px solid white; } td { color : brown ; border : 1px solid brown }", con = "mystyle.css")
 knitr::kable(head(community), format = "html")
 
@@ -390,7 +350,8 @@ knitr::kable(head(community), format = "html")
 what I found interesting is I get quite good groups like the group 6 in which we found 
 only Hilary's family : Chelsea , bill and a common mail dress (I guess) to Hillary and bill .
 This encouraged my to keep this result and to not use other community detection algorithms.
-```{r eval=TRUE,cache=TRUE,tidy=TRUE,results='asis'}
+
+```r
 writeLines("td, th { padding : 6px } th { background-color : brown ; color : white; border : 1px solid white; } td { color : brown ; border : 1px solid brown }", con = "mystyle.css")
 knitr::kable(community[which(community$Community_grp %in% 6),], format = "html")
 # I add the community feature to my datasets 
@@ -399,11 +360,12 @@ Trainingv3<-join(Trainingv2, community,type = "left")
 Testv3<-join(Test, community,type = "left")
 ```
 
-## VI TEXT MINING 
+VI TEXT MINING 
+--------------
 
 ### Pre-processing
 Let's do some  pre-processing on the mail content .
-```{r eval=TRUE,cache=TRUE,tidy=TRUE}
+```r
 
 #Train dataset
 Trainingv3$Content <- as.character(Trainingv3$Content)
@@ -426,7 +388,7 @@ Testv3$Content <- tolower(Testv3$Content)  # force to lowercase
 ### Topic extraction
 Now let's extract the topics from the content of each mail.
 We will use this later as a feature in our model.
-```{r eval=TRUE,cache=TRUE,tidy=TRUE}
+```r
 
 ## Source topicmodels2LDAvis & optimal_k functions
 if (!require("pacman")) install.packages("pacman")
@@ -466,7 +428,7 @@ control <- list(burnin = 500, iter = 1000, keep = 100, seed = 2500)
 
 ```
 
-```{r ,eval=FALSE,tidy=TRUE}
+```r
 
 ############## Dertmine optimal number of topics  ################
 
@@ -479,14 +441,14 @@ control <- list(burnin = 500, iter = 1000, keep = 100, seed = 2500)
 As you can see, the number of optimal topics sees to be equal fourteen.
 
 
-```{r,echo=FALSE}
+```r
 
 control[["seed"]] <- 100
 lda_model <- topicmodels::LDA(doc_term_mat, k=40, method = "Gibbs", 
                               control = control)
 ```
 
-```{r ,eval=FALSE,tidy=TRUE}
+```r
 
 ############## Run the model   ################
 
@@ -495,7 +457,7 @@ lda_model <- topicmodels::LDA(doc_term_mat, k=as.numeric(k), method = "Gibbs",
                               control = control)
 ```
 
-```{r ,eval=FALSE,tidy=TRUE}
+```r 
 
 ######################### get the topic ######################### 
 
@@ -505,14 +467,14 @@ colnames(topic_dat)[-1] <- apply(terms(lda_model, 10), 2, paste, collapse = ", "
 
 
 ```
-```{r,echo=FALSE}
+```r
 topic_dat <- readRDS("topic_dat.rds")
 topics <- readRDS("topics.rds")
 
 
 ```
 
-```{r ,eval=FALSE,tidy=TRUE}
+```r
 
 ##################### Nice visualization ###########################
 
@@ -546,7 +508,7 @@ writeLines("td, th { padding : 6px } th { background-color : brown ; color : whi
 knitr::kable(head(topic_dat), format = "html")
 ```
 
-```{r  eval=TRUE,cache=TRUE,tidy=TRUE}
+```r
 
 library(data.table)
 topic_dat<-as.data.table(topic_dat)
@@ -616,7 +578,8 @@ Testv4<-join(Testv3,test_topic_dat_with_top3,type="left")
 
 ```
 
-## VII FEATURE ENGINEERING 
+VII FEATURE ENGINEERING 
+-----------------------
 
 In this section we will create some features from the data sets that I created so fare
 the variables  that I will crate are :
@@ -651,7 +614,7 @@ We will create a function that will convert any numeric values to string value.
 
 
 I will explain in the moderation section , why I did that .
-```{r  eval=TRUE,cache=TRUE,tidy=TRUE}
+```r
 
 numbers2words <- function(x){
 
@@ -703,7 +666,7 @@ numbers2words <- function(x){
 }
 ```
 
-```{r  eval=TRUE,cache=TRUE,tidy=TRUE}
+```r
 
 ## train dataset
 
@@ -729,13 +692,15 @@ nb_msj_sent<-sqldf("SELECT Sender,COUNT(DISTINCT(Mail_ID)) as nb_msj_sent FROM T
 Trainingv4<-join(Trainingv4,nb_msj_sent,type='left')
 ```
 Now we will transform the variables nb_msj_sent and wordcount into categorical variables by binning their numerical versions.
-```{r  eval=TRUE,cache=TRUE,tidy=TRUE}
+
+```r
 
 # Binning the variables nb_msj_sent and wordcount
 hist(as.integer(nb_msj_sent$nb_msj_sent),main ="Number of msj sent by mail's sender")
 hist(as.numeric(Trainingv4$wordcount),main ="Number of characters per mail")
 ```
-```{r  eval=TRUE,cache=TRUE,tidy=TRUE}
+
+```r
 
 Trainingv4$nb_msj_sent<-cut(Trainingv4$nb_msj_sent,breaks =c(0,500,1100,1500),include.lowest = T)
 levels(Trainingv4$nb_msj_sent)<-c("fewsent","mediumsent","largesent")
@@ -774,7 +739,7 @@ levels(Testv4$wordcount)<-c("verysmallcnt","smallcnt","mediumcnt","hugecnt")
 ```
 
 
-```{r  eval=TRUE,cache=TRUE,tidy=TRUE}
+```r
 # We clean the sender mail adress and extract his user name
 # To do that we create a function 
 library(exploratory)
@@ -791,7 +756,8 @@ Testv5<-clean_funct(Testv4)
 ```
 
 Lets visualize the final train and test data set.
-```{r eval=TRUE,cache=TRUE,tidy=TRUE,results='asis'}
+
+```r
 ### drop usless columns
 Trainingv5<-Trainingv5[-7]
 Testv5<-Testv5[-6]
