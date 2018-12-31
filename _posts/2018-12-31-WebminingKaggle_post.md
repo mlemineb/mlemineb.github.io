@@ -2,7 +2,7 @@
 layout: post
 title: "Web-Mining: a Kaggle competition"
 author: "Beydia Mohamed Lemine"
-date: "29 March 2018"
+date: "31 December 2018"
 categories: text_analysis
 tags: text_analysis kaggle network text mining
 image: text_analysis/2018/12/31/WebminingKaggle_post_files/network.png
