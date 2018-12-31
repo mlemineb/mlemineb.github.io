@@ -829,19 +829,19 @@ sessionInfo()
   ## R version 3.5.0 (2018-04-23)
   ## Platform: x86_64-w64-mingw32/x64 (64-bit)
   ## Running under: Windows >= 8 x64 (build 9200)
-
+  ## 
   ##Matrix products: default
-
+  ## 
   ## locale:
   ## [1] LC_COLLATE=French_France.1252  LC_CTYPE=French_France.1252    LC_MONETARY=French_France.1252 LC_NUMERIC=C                  
   ## [5] LC_TIME=French_France.1252    
-
+  ## 
   ## attached base packages:
   ## [1] stats     graphics  grDevices utils     datasets  methods   base     
-
+  ## 
   ## other attached packages:
   ## [1] stringr_1.3.1     data.table_1.11.2 gofastr_0.3.1     pacman_0.4.6      igraph_1.2.1      networkD3_0.4    
-
+  ## 
   ## loaded via a namespace (and not attached):
   ## [1] Rcpp_0.12.16     knitr_1.20       bindr_0.1.1      magrittr_1.5     tidyselect_0.2.4 munsell_0.4.3    colorspace_1.3-2
   ## [8] R6_2.2.2         rlang_0.3.0.1    plyr_1.8.4       dplyr_0.7.5      tools_3.5.0      grid_3.5.0       gtable_0.2.0    
