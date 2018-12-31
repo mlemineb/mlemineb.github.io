@@ -59,7 +59,7 @@ We are going to download them directly from kaggle through R. T do that, we need
 R program, note that I hided my password for safety reason .
 
 
-```{r,  eval=TRUE,cache=TRUE,tidy=TRUE,results="hide",message = FALSE, warning=FALSE}
+```r
 # I Set data urls 
 loginurl = "https://www.kaggle.com/account/login"
 fileUrl_train_info<-"https://www.kaggle.com/c/recipient-prediction/download/training_info_sid.csv"
@@ -73,7 +73,7 @@ library(RCurl)
 #Set user account data and agent
 pars=list(
   UserName="m.beydia@gmail.com",
-  Password="mohamed99"
+  Password="*******"
 )
 agent="Mozilla/5.0" #or whatever 
 
@@ -511,9 +511,11 @@ Overall term frequency Estimated term frequency within the selected topic
 
 2. relevance(term w | topic t) = ?? * p(w | t) + (1 - ??) * p(w | t)/p(w); see Sievert & Shirley (2014)
 
-### appending the most likly topic to my train dataset
+
+
 Let's have a look at the content of our topic extraction .
-```{r eval=TRUE,cache=TRUE,tidy=TRUE,results='asis'}
+
+```r
 ### appending the most likly topic to my train dataset
 
 library(data.table)
