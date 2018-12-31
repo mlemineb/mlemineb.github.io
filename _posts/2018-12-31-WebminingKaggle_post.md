@@ -5,7 +5,7 @@ author: "Beydia Mohamed Lemine"
 date: "29 March 2018"
 categories: text_analysis
 tags: text_analysis kaggle network text mining
-image: text_analysis/2018/12/31/network.png
+image: text_analysis/2018/12/31/WebminingKaggle_post/network.png
 ---
 
 This post is about a  kaggle competition that was organised by Toulouse school of Economics and both University of Toulouse 1 & 3 (Paul Sabatier) between 3 master's programe in statisctics.
@@ -167,7 +167,7 @@ knitr::kable(Training[18:19,], format = "html")
 
 ```
 
-<img src="text_analysis/2018/12/31/Capture1_WK.png" style="display: block; margin: auto;" />
+<img src="text_analysis/2018/12/31/WebminingKaggle_post/Capture1_WK.png" style="display: block; margin: auto;" />
 
 
 ```r
@@ -176,8 +176,7 @@ knitr::kable(Test[16:18,], format = "html")
 
 ```
 
-<img src="text_analysis/2018/12/31/Capture2_WK.png" style="display: block; margin: auto;" />
-![](text_analysis/2018/12/31/Capture2_WK.png)
+<img src="text_analysis/2018/12/31/WebminingKaggle_post/Capture2_WK.png" style="display: block; margin: auto;" />
 
 
 <br>
@@ -212,7 +211,7 @@ display what I have done so Fare
 writeLines("td, th { padding : 6px } th { background-color : brown ; color : white; border : 1px solid white; } td { color : brown ; border : 1px solid brown }", con = "mystyle.css")
 knitr::kable(Trainingv2[1:3,], format = "html")
 ```
-<img src="text_analysis/2018/12/31/Capture2_WK.png" style="display: block; margin: auto;" />
+<img src="text_analysis/2018/12/31/WebminingKaggle_post/Capture3_WK.png" style="display: block; margin: auto;" />
 
 
 As you can see I have one recipient per row 
@@ -236,7 +235,7 @@ p<-ggplot(data=email_recevied_count[1:15,], aes(x=recipient, y=count)) +
 p + coord_flip() 
 ```
 
-<img src="text_analysis/2018/12/31/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
+<img src="text_analysis/2018/12/31/WebminingKaggle_post/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
 
 
 second plot : Mails sent
@@ -254,7 +253,7 @@ p<-ggplot(data=email_sent_count[1:15,], aes(x=Sender, y=count)) +
 p + coord_flip() 
 ```
 
-<img src="text_analysis/2018/12/31/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+<img src="text_analysis/2018/12/31/WebminingKaggle_post/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
 
 
 We have seen the Hillary seems the one who send and receive the most emails , which make sense :)
