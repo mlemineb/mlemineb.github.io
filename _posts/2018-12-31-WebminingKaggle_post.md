@@ -167,7 +167,7 @@ knitr::kable(Training[18:19,], format = "html")
 
 ```
 
-<img src="WebminingKaggle_post_files/figure-markdown_github/unnamed-chunk-21-1.png" style="display: block; margin: auto;" />
+<img src="WebminingKaggle_post_files/figure-markdown_github/unnamed-chunk-21-1.png"/>
 
 
 ```r
