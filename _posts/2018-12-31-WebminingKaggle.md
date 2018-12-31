@@ -177,7 +177,7 @@ knitr::kable(Test[16:18,], format = "html")
 ```
 
 <img src="text_analysis/2018/12/31/Capture2_WK.png" style="display: block; margin: auto;" />
-
+![](text_analysis/2018/12/31/Capture2_WK.png)
 <br>
 
 
