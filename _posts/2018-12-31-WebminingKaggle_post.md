@@ -365,6 +365,10 @@ net.sym <- as.undirected(net, mode= "collapse",edge.attr.comb=list(weight="sum",
 cfg <- cluster_fast_greedy(as.undirected(net))
 dendPlot(cfg, mode="hclust")
 
+
+<img src="WebminingKaggle_post_files/figure-markdown_github/unnamed-chunk-19-1.png" style="display: block; margin: auto;" />
+
+
 com_members<-membership(cfg)
 
 community<-as.data.frame(cbind(V(net)$name,cfg$membership))
@@ -473,7 +477,7 @@ control <- list(burnin = 500, iter = 1000, keep = 100, seed = 2500)
 
 ```
 
-![](optimal_k.png)
+<img src="WebminingKaggle_post_files/figure-markdown_github/unnamed-chunk-25-1.png" style="display: block; margin: auto;" />
 
 As you can see, the number of optimal topics sees to be equal fourteen.
 
@@ -520,7 +524,7 @@ lda_model %>%
   LDAvis::serVis()
 
 ```
-![](lda.png)
+<img src="WebminingKaggle_post_files/figure-markdown_github/unnamed-chunk-27-1.png" style="display: block; margin: auto;" />
 
 As you can, the output is a webpage on the localhost that allows to see what are the main frequent words by topics. Note also that we have a slider that allows us to change the value of relevant metrics :
 
@@ -546,6 +550,8 @@ topic_dat<-as.data.table(topic_dat)
 writeLines("td, th { padding : 6px } th { background-color : brown ; color : white; border : 1px solid white; } td { color : brown ; border : 1px solid brown }", con = "mystyle.css")
 knitr::kable(head(topic_dat), format = "html")
 ```
+<img src="WebminingKaggle_post_files/figure-markdown_github/unnamed-chunk-28-1.png" style="display: block; margin: auto;" />
+
 
 ```r
 
@@ -741,6 +747,9 @@ Now we will transform the variables nb_msj_sent and wordcount into categorical v
 hist(as.integer(nb_msj_sent$nb_msj_sent),main ="Number of msj sent by mail's sender")
 hist(as.numeric(Trainingv4$wordcount),main ="Number of characters per mail")
 ```
+<img src="WebminingKaggle_post_files/figure-markdown_github/unnamed-chunk-34-1.png" style="display: block; margin: auto;" />
+<img src="WebminingKaggle_post_files/figure-markdown_github/unnamed-chunk-34-2.png" style="display: block; margin: auto;" />
+
 
 ```r
 
